@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const EncodingPlugin = require("webpack-encoding-plugin");
 const webpack = require("webpack");
 //output 的chunkname 和 filename 有什么区别？
 
@@ -48,6 +49,9 @@ module.exports = {
         }),
         new webpack.optimize.SplitChunksPlugin({
             name: "vendor"
+        }),
+        new EncodingPlugin({
+            encoding: "UTF-8"
         })
     ],
     mode: "development"
