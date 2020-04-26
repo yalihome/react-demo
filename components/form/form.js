@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import FancyButton from "../fancybutton/fancybutton";
 
 class Form extends Component {
     constructor(props) {
+        console.log("form property:");
+        console.log(props);
         super(props);
         this.state = Object.assign({}, props);
         this.input = React.createRef();
+        this.btn = React.createRef();
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,6 +20,7 @@ class Form extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
+            <FancyButton ref={this.btn}>Click Me!</FancyButton>
                 <div>
                     <label>电话:
                         <input type="text" ref={this.input}/>
@@ -62,12 +67,13 @@ class Form extends Component {
     }
 
     handleSubmit(e) {
-        console.log("提交的名字:" + this.state.value);
-        console.log("提交的描述:" + this.state.text);
+        // console.log("提交的名字:" + this.state.value);
+        // console.log("提交的描述:" + this.state.text);
         e.preventDefault();
         // ref 是什么
-        console.log(this.input);
-        console.log(this.input.current.value);
+        // console.log(this.input);
+        // console.log(this.input.current.value);
+        console.log(this.btn.current);
     }
 
     handleTextChange(e) {
